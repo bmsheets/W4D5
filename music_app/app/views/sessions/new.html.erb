@@ -8,7 +8,7 @@
   <% end %>
 </ul>
 
-<form class="" action="<%= session_url %>" method="post">
+<form class="login-form" action="<%= session_url %>" method="post">
   <label for="">
     Email: <input type="text" name="user[email]">
   </label>
@@ -17,5 +17,5 @@
     Password: <input type="password" name="user[password]">
   </label>
 
-  <input type="submit" value="Log in">
+  <input class="button" type="submit" value="Log in">
 </form>
