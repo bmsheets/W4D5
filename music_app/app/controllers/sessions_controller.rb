@@ -10,22 +10,17 @@ class SessionsController < ApplicationController
     )
     if user
       login(user)
-      # redirect_to
     else
-      flash.now[:errors] = self.errors.full_messages
+      flash.now[:errors] = ["Invalid credentials"]
       render :new
     end
   end
 
   def destroy
-    user = User.find_by_credentials(
-      params[:user][:email],
-      params[:user][:password]
-    )
-    if user
-      logout(user)
+    if logged_in?
+      logout(current_user)
     else
-      flash.now[:errors] = self.errors.full_messages
+      flash.now[:errors] = ["Cannot log out"]
       render :new
     end
   end
